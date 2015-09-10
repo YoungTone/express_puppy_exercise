@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Puppies</title>
+</head>
+<body>
+  <h1>Puppies</h1>
+  <ul>
+    <% puppies.forEach(function(puppy){ %>
+    <li><%= puppy.name %> <%= puppy.age%></li>
+      <% }); %>
+  </ul>
+    <form action="/puppies/new">
+    <button name="button">Add a Puppy!</button>
+    </form><br>
+      <form action="/about">
+    <button name="button">About</button>
+    </form><br>
+     <form action="/contact">
+    <button name="button">Contact</button>
+    </form>
+</body>
+</html>
