@@ -1,9 +1,13 @@
 // boilerplate code
 var express = require('express'),
     app = express();
-
+bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 // set view engine to ejs
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname +"css/style.css"));
 
 // array of puppies
 puppies = [{
@@ -26,10 +30,11 @@ app.get('/puppies/new', function(req, res) {
 });
 
 // adding puppies to array save puppies
-app.get('/puppies', function(req, res) {
+app.post('/puppies', function(req, res) {
+// for GET use req.body
     newPuppy = {};
-    newPuppy.name = req.query.name;
-    newPuppy.age = req.query.age;
+    newPuppy.name = req.body.name;
+    newPuppy.age = req.body.age;
     puppies.push(newPuppy);
     newPuppy.id = newId;
     newId++;
@@ -58,7 +63,13 @@ app.get('/puppies/:pupid', function(req, res) {
     });
 
 });
+app.get('/about', function(req, res) {
+    res.render('about');
+});
 
+app.get('/contact', function(req, res) {
+    res.render('contact');
+});
 
 
 
